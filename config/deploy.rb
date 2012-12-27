@@ -41,8 +41,15 @@ namespace :bootstrap do
   end
 end
 
+namespace :berks do
+  task :install do
+    system("berks install --path chef/cookbooks")
+  end
+end
+
 namespace :chef do
   task :default do
+    find_and_execute_task("berks:install")
     system("tar czf 'chef.tar.gz' -C chef/ .")
     upload("chef.tar.gz","/home/#{user}",:via => :scp)
     run("rm -rf /home/#{user}/chef")
