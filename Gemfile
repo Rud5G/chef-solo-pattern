@@ -6,5 +6,6 @@ group :deployment do
     gem "capistrano-ext"
     gem "rvm-capistrano"
     gem "chef"
+    gem "berkshelf"
   end
 end
